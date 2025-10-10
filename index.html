@@ -1,75 +1,322 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lionel Messi - Football Player Profile</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aidora (ADR) - Where Crypto Meets Hope</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        footer {
+            flex-shrink: 0;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --navy: #0A1A2F;
+            --royal-blue: #3A8DFF;
+            --soft-gold: #D4AF37;
+            --light-blue: #E3EEFF;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+        }
+        
+        body {
+            background: var(--navy);
+            color: var(--text-primary);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--royal-blue), var(--soft-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--royal-blue), var(--soft-gold));
+        }
+        
+        .gradient-border {
+            position: relative;
+            background: transparent;
+            color: var(--text-primary);
+            border-radius: 1rem;
+            padding: 1rem 2rem;
+            overflow: hidden;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--royal-blue), var(--soft-gold));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            transition: all 0.3s ease;
+        }
+        
+        .gradient-border:hover::before {
+            padding: 3px;
+            filter: brightness(1.2);
+        }
+        
+        .gradient-border:hover {
+            background: var(--soft-gold);
+            color: var(--navy);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--royal-blue), var(--soft-gold));
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(58, 141, 255, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 26, 47, 0.8);
+            border: 1px solid var(--soft-gold);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--royal-blue);
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, var(--royal-blue), var(--soft-gold));
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+        
+        nav {
+            backdrop-filter: blur(10px);
+            background: rgba(10, 26, 47, 0.9);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .hero-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        .stat-card {
+            background: rgba(10, 26, 47, 0.8);
+            border: 1px solid var(--soft-gold);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            border-color: var(--royal-blue);
+            box-shadow: 0 8px 30px rgba(58, 141, 255, 0.2);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .comparison-table {
+            overflow-x: auto;
+        }
+        
+        .comparison-table table {
+            min-width: 800px;
+        }
+    </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Lionel Messi</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
+<body class="antialiased">
+    <main>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center shadow-lg">
+                        <span class="text-white font-bold text-xl">A</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold gradient-text">Aidora</h1>
+                        <p class="text-xs text-text-secondary">ADR Token</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#problem" class="text-text-primary hover:text-soft-gold transition">Problem</a>
+                    <a href="#solution" class="text-text-primary hover:text-soft-gold transition">Solution</a>
+                    <a href="#mission" class="text-text-primary hover:text-soft-gold transition">Mission</a>
+                    <a href="#invest" class="text-text-primary hover:text-soft-gold transition">Invest</a>
+                </div>
+                <button class="cta-button text-white px-6 py-2 rounded-lg font-semibold">
+                    Buy ADR Token
+                </button>
             </div>
         </div>
     </nav>
 
-    <header class="bg-primary text-white text-center py-5">
-        <div class="container">
-            <img src="https://cdn.pixabay.com/photo/2016/06/15/20/08/football-1457986_1280.jpg" alt="Lionel Messi" class="rounded-circle mb-3" style="width:150px;height:150px;object-fit:cover;">
-            <h1>Lionel Messi</h1>
-            <p class="lead">Professional Football Player</p>
-        </div>
-    </header>   
-
-    <section id="about" class="py-5">
-        <div class="container">
-            <h2>About Lionel Messi</h2>
-            <p>Lionel Messi is an Argentine professional footballer who plays as a forward for Inter Miami and the Argentina national team. Widely regarded as one of the greatest players of all time, Messi has won numerous awards including seven Ballon d'Or titles and led Argentina to victory in the 2022 FIFA World Cup.</p>
-            <ul>
-                <li><strong>Full Name:</strong> Lionel Andrés Messi</li>
-                <li><strong>Date of Birth:</strong> June 24, 1987</li>
-                <li><strong>Nationality:</strong> Argentine</li>
-                <li><strong>Current Club:</strong> Inter Miami CF</li>
-                <li><strong>Position:</strong> Forward</li>
-            </ul>
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 px-4 overflow-hidden bg-navy">
+        <div class="hero-glow" style="top: -200px; left: -100px; background: var(--royal-blue);"></div>
+        <div class="hero-glow" style="bottom: -200px; right: -100px; background: var(--soft-gold);"></div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    One Coin. <span class="gradient-text">One Act of Hope.</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-light-blue mb-4 max-w-3xl mx-auto">
+                    Where Crypto Meets a World Where Giving Never Gets Lost
+                </p>
+                <p class="text-lg text-text-secondary mb-12 max-w-2xl mx-auto">
+                    Aidora (ADR) is a blockchain-powered humanitarian ecosystem that ensures every donation reaches those who need it most — with complete transparency and zero corruption.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button class="cta-button text-white px-8 py-4 rounded-xl font-semibold text-lg">
+                        Buy ADR Token
+                    </button>
+                    <button class="gradient-border text-text-primary font-semibold text-lg hover:text-navy">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 fade-in">
+                <div class="stat-card rounded-2xl p-6">
+                    <div class="text-4xl font-bold gradient-text mb-2">100%</div>
+                    <div class="text-text-primary">Transparent</div>
+                </div>
+                <div class="stat-card rounded-2xl p-6">
+                    <div class="text-4xl font-bold gradient-text mb-2">0%</div>
+                    <div class="text-text-primary">Corruption</div>
+                </div>
+                <div class="stat-card rounded-2xl p-6">
+                    <div class="text-4xl font-bold gradient-text mb-2">∞</div>
+                    <div class="text-text-primary">Global Reach</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="projects" class="py-5 bg-light">
-        <div class="container">
-            <h2>Career Highlights</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Ballon d'Or Wins</h5>
-                            <p class="card-text">Messi has won the Ballon d'Or a record seven times, recognizing him as the world's best player.</p>
+    <!-- Problem Section -->
+    <section id="problem" class="py-20 px-4 bg-navy">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-text-primary">
+                    The <span class="gradient-text">Broken State</span> of Global Aid
+                </h2>
+                <p class="text-xl text-text-secondary">Lack of Transparency and Efficiency in Social Welfare Systems</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">💸</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-2 text-text-primary">30-40% Lost to Overhead</h3>
+                                <p class="text-text-secondary">Administrative burden consumes up to 40% of aid before it reaches recipients.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">🚫</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-2 text-text-primary">Billions Lost to Fraud</h3>
+                                <p class="text-text-secondary">Corruption and fraud divert billions annually from those in need.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">🔒</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-2 text-text-primary">Millions Excluded</h3>
+                                <p class="text-text-secondary">Complex processes exclude many eligible people who desperately need help.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center flex-shrink-0">
+                                <span class="text-2xl">⏱️</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-2 text-text-primary">Delayed Response</h3>
+                                <p class="text-text-secondary">Centralized systems create bottlenecks, delaying critical aid during emergencies.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">FIFA World Cup 2022</h5>
-                            <p class="card-text">Led Argentina to World Cup victory in 2022, scoring crucial goals and earning the Golden Ball award.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Barcelona Legend</h5>
-                            <p class="card-text">Messi spent over 20 years at FC Barcelona, becoming the club's all-time top scorer and winning numerous titles.</p>
+                
+                <div class="fade-in">
+                    <div class="bg-navy/50 backdrop-blur-md rounded-3xl p-8 border border-soft-gold shadow-xl">
+                        <h3 class="text-2xl font-bold mb-6 gradient-text">The Harsh Reality</h3>
+                        <p class="text-text-primary leading-relaxed mb-6">
+                            The most pressing issues in today's social welfare systems are <strong class="text-soft-gold">lack of transparency</strong>, <strong class="text-soft-gold">inefficiency</strong>, <strong class="text-soft-gold">high administrative overhead</strong>, <strong class="text-soft-gold">fraud</strong>, and the <strong class="text-soft-gold">stigma of accessing aid</strong>.
+                        </p>
+                        <p class="text-text-secondary leading-relaxed mb-6">
+                            Traditional aid programs are usually centralized and controlled by governments or large NGOs. This centralization creates multiple points of vulnerability.
+                        </p>
+                        <div class="bg-navy/80 rounded-xl p-6 border-l-4 border-soft-gold">
+                            <p class="text-text-primary font-semibold mb-2">Result:</p>
+                            <p class="text-text-secondary">Donor mistrust, delayed help, and millions of underserved individuals worldwide.</p>
                         </div>
                     </div>
                 </div>
@@ -77,33 +324,511 @@
         </div>
     </section>
 
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2>Contact</h2>
-            <form>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Your name">
+    <!-- Solution Section -->
+    <section id="solution" class="py-20 px-4 bg-navy relative">
+        <div class="hero-glow" style="top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--royal-blue);"></div>
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-text-primary">
+                    How <span class="gradient-text">Aidora</span> Solves It
+                </h2>
+                <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+                    A blockchain-powered humanitarian ecosystem that redefines how aid is distributed and governed
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="fade-in card-hover rounded-2xl p-8">
+                    <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 text-white text-3xl">
+                        🔗
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-text-primary">Immutability & Transparency</h3>
+                    <p class="text-text-secondary">Every aid transaction is public, permanent, and tamper-proof on the blockchain.</p>
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Your email">
+                
+                <div class="fade-in card-hover rounded-2xl p-8">
+                    <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 text-white text-3xl">
+                        📜
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-text-primary">Smart Contracts</h3>
+                    <p class="text-text-secondary">Automate aid delivery and cut out costly intermediaries with self-executing code.</p>
                 </div>
-                <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" rows="3" placeholder="Your message"></textarea>
+                
+                <div class="fade-in card-hover rounded-2xl p-8">
+                    <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 text-white text-3xl">
+                        🆔
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-text-primary">Digital Identity (DID)</h3>
+                    <p class="text-text-secondary">Secure IDs help recipients claim aid without bureaucracy or stigma.</p>
                 </div>
-                <button type="submit" class="btn btn-primary">Send</button>
-            </form>
+                
+                <div class="fade-in card-hover rounded-2xl p-8">
+                    <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 text-white text-3xl">
+                        🛡️
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-text-primary">Fraud Prevention</h3>
+                    <p class="text-text-secondary">Immutable blockchain records prevent manipulation or double claims.</p>
+                </div>
+                
+                <div class="fade-in card-hover rounded-2xl p-8">
+                    <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 text-white text-3xl">
+                        🌍
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-text-primary">Global Scalability</h3>
+                    <p class="text-text-secondary">Decentralization enables instant cross-border aid transfers anywhere.</p>
+                </div>
+                
+                <div class="fade-in card-hover rounded-2xl p-8">
+                    <div class="feature-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6 text-white text-3xl">
+                        ⚡
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-text-primary">Instant Distribution</h3>
+                    <p class="text-text-secondary">No delays, no middlemen — aid reaches recipients in real-time.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="bg-dark text-white text-center py-3">
-        <div class="container">
-            &copy; 2024 Lionel Messi. All rights reserved.
+    <!-- Competitor Comparison Section -->
+    <section class="py-20 px-4 bg-navy">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Why <span class="gradient-text">Aidora</span> Stands Out
+                </h2>
+                <p class="text-xl text-gray-600">The only fully decentralized, transparent humanitarian crypto platform</p>
+            </div>
+            
+            <div class="fade-in comparison-table">
+                <div class="overflow-x-auto rounded-2xl shadow-xl">
+                    <table class="w-full bg-white">
+                        <thead>
+                            <tr class="gradient-bg text-white">
+                                <th class="px-6 py-4 text-left font-semibold">Platform</th>
+                                <th class="px-6 py-4 text-center font-semibold">Transparency</th>
+                                <th class="px-6 py-4 text-center font-semibold">Decentralized</th>
+                                <th class="px-6 py-4 text-center font-semibold">Low Overhead</th>
+                                <th class="px-6 py-4 text-center font-semibold">Global Scale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="px-6 py-4 font-semibold gradient-text text-lg">Traditional NGOs</td>
+                                <td class="px-6 py-4 text-center">❌</td>
+                                <td class="px-6 py-4 text-center">❌</td>
+                                <td class="px-6 py-4 text-center">❌</td>
+                                <td class="px-6 py-4 text-center">⚠️</td>
+                            </tr>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="px-6 py-4 font-semibold gradient-text text-lg">GiveDirectly</td>
+                                <td class="px-6 py-4 text-center">⚠️</td>
+                                <td class="px-6 py-4 text-center">❌</td>
+                                <td class="px-6 py-4 text-center">✅</td>
+                                <td class="px-6 py-4 text-center">❌</td>
+                            </tr>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="px-6 py-4 font-semibold gradient-text text-lg">Binance Charity</td>
+                                <td class="px-6 py-4 text-center">✅</td>
+                                <td class="px-6 py-4 text-center">❌</td>
+                                <td class="px-6 py-4 text-center">✅</td>
+                                <td class="px-6 py-4 text-center">✅</td>
+                            </tr>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="px-6 py-4 font-semibold gradient-text text-lg">Giveth (DAO)</td>
+                                <td class="px-6 py-4 text-center">✅</td>
+                                <td class="px-6 py-4 text-center">✅</td>
+                                <td class="px-6 py-4 text-center">✅</td>
+                                <td class="px-6 py-4 text-center">⚠️</td>
+                            </tr>
+                            <tr class="bg-gradient-to-r from-blue-50 to-teal-50 font-bold">
+                                <td class="px-6 py-4 gradient-text text-lg">Aidora (ADR)</td>
+                                <td class="px-6 py-4 text-center text-xl">✅</td>
+                                <td class="px-6 py-4 text-center text-xl">✅</td>
+                                <td class="px-6 py-4 text-center text-xl">✅</td>
+                                <td class="px-6 py-4 text-center text-xl">✅</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 fade-in">
+                <div class="bg-navy/50 backdrop-blur-md rounded-xl p-6 border border-soft-gold card-hover">
+                    <h4 class="font-bold mb-2 gradient-text">Traditional NGOs</h4>
+                    <p class="text-sm text-text-secondary">Large networks but 30-40% overhead, corruption, and lack of transparency.</p>
+                </div>
+                <div class="bg-navy/50 backdrop-blur-md rounded-xl p-6 border border-soft-gold card-hover">
+                    <h4 class="font-bold mb-2 gradient-text">GiveDirectly</h4>
+                    <p class="text-sm text-text-secondary">Direct cash transfers but centralized and geographically limited.</p>
+                </div>
+                <div class="bg-navy/50 backdrop-blur-md rounded-xl p-6 border border-soft-gold card-hover">
+                    <h4 class="font-bold mb-2 gradient-text">Binance Charity</h4>
+                    <p class="text-sm text-text-secondary">Transparent on-chain but still centralized under corporation control.</p>
+                </div>
+                <div class="bg-navy/50 backdrop-blur-md rounded-xl p-6 border border-soft-gold card-hover">
+                    <h4 class="font-bold mb-2 gradient-text">Aidora (ADR)</h4>
+                    <p class="text-sm text-text-secondary">Fully decentralized, democratic, traceable, and built for global adoption.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section id="mission" class="py-20 px-4 bg-navy relative">
+        <div class="hero-glow" style="top: 0; right: 0; background: var(--soft-gold);"></div>
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Mission -->
+                <div class="fade-in">
+                    <div class="bg-navy/50 backdrop-blur-md rounded-3xl p-10 border border-soft-gold card-hover h-full">
+                        <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 text-white text-3xl shadow-lg">
+                            🎯
+                        </div>
+                        <h2 class="text-3xl font-bold mb-6 gradient-text">Our Mission</h2>
+                        <p class="text-text-primary mb-6 leading-relaxed">
+                            Aidora's mission is to redefine how aid is distributed and governed by leveraging Web3 innovations such as smart contracts, decentralized governance, and blockchain-based digital identity.
+                        </p>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-soft-gold mt-1">✓</span>
+                                <p class="text-text-secondary">Empower donors with full transparency</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-soft-gold mt-1">✓</span>
+                                <p class="text-text-secondary">Support NGOs through accountability and incentives</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-soft-gold mt-1">✓</span>
+                                <p class="text-text-secondary">Include marginalized communities via blockchain IDs</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-soft-gold mt-1">✓</span>
+                                <p class="text-text-secondary">Accelerate relief efforts using automated smart contracts</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-soft-gold mt-1">✓</span>
+                                <p class="text-text-secondary">Build a sustainable, transparent ecosystem powered by ADR tokens</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vision -->
+                <div class="fade-in">
+                    <div class="bg-navy/50 backdrop-blur-md rounded-3xl p-10 border border-soft-gold card-hover h-full">
+                        <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 text-white text-3xl shadow-lg">
+                            🌟
+                        </div>
+                        <h2 class="text-3xl font-bold mb-6 gradient-text">Our Vision</h2>
+                        <p class="text-text-primary mb-6 leading-relaxed text-lg">
+                            Aidora envisions a world where humanitarian aid is <strong class="text-soft-gold">fast</strong>, <strong class="text-soft-gold">fair</strong>, and <strong class="text-soft-gold">fully transparent</strong> — reaching every person in need without barriers of geography, bureaucracy, or corruption.
+                        </p>
+                        <div class="bg-navy/80 backdrop-blur-md rounded-2xl p-6 mt-8 border border-soft-gold">
+                            <h3 class="font-bold text-xl mb-4 text-text-primary">A World Where:</h3>
+                            <div class="space-y-3">
+                                <p class="text-text-secondary flex items-center">
+                                    <span class="mr-3 text-2xl">🌐</span>
+                                    Aid flows instantly across borders
+                                </p>
+                                <p class="text-text-secondary flex items-center">
+                                    <span class="mr-3 text-2xl">👥</span>
+                                    Every donor knows where their money goes
+                                </p>
+                                <p class="text-text-secondary flex items-center">
+                                    <span class="mr-3 text-2xl">💎</span>
+                                    Corruption becomes impossible
+                                </p>
+                                <p class="text-text-secondary flex items-center">
+                                    <span class="mr-3 text-2xl">❤️</span>
+                                    Hope reaches everyone in need
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Section -->
+    <section id="invest" class="py-20 px-4 bg-gradient-to-br from-navy via-royal-blue to-soft-gold text-text-primary relative overflow-hidden">
+        <div class="hero-glow" style="top: 0; left: 0; background: var(--royal-blue); opacity: 0.2;"></div>
+        <div class="hero-glow" style="bottom: 0; right: 0; background: var(--soft-gold); opacity: 0.2;"></div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10 fade-in">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6">
+                Invest in <span class="gradient-text">Hope</span> — Own ADR
+            </h2>
+            <p class="text-xl md:text-2xl mb-4 text-light-blue">
+                Be part of the revolution that's transforming humanitarian aid forever
+            </p>
+            <p class="text-lg mb-12 text-text-secondary max-w-2xl mx-auto">
+                When you invest in ADR tokens, you're not just buying cryptocurrency — you're funding transparency, empowering communities, and ensuring that every act of giving reaches those who need it most.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                <button class="cta-button text-white px-10 py-5 rounded-xl font-bold text-xl hover:scale-105 transition-all shadow-2xl">
+                    🚀 Buy ADR Token
+                </button>
+                <a href="https://aidora.gitbook.io/aidora/" target="_blank" class="gradient-border text-text-primary px-10 py-5 rounded-xl font-bold text-xl hover:text-navy transition-all inline-block">
+                    📖 Read Whitepaper
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                <div class="card-hover rounded-2xl p-8">
+                    <div class="text-5xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold mb-2 text-text-primary">Own the Future</h3>
+                    <p class="text-text-secondary">Invest in a sustainable humanitarian ecosystem</p>
+                </div>
+                <div class="card-hover rounded-2xl p-8">
+                    <div class="text-5xl mb-4">🔓</div>
+                    <h3 class="text-xl font-bold mb-2 text-text-primary">Full Transparency</h3>
+                    <p class="text-text-secondary">Track every transaction on the blockchain</p>
+                </div>
+                <div class="card-hover rounded-2xl p-8">
+                    <div class="text-5xl mb-4">🌟</div>
+                    <h3 class="text-xl font-bold mb-2 text-text-primary">Make Real Impact</h3>
+                    <p class="text-text-secondary">Your investment directly helps those in need</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community & Social Links -->
+    <section class="py-20 px-4 bg-navy">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Join Our <span class="gradient-text">Global Community</span>
+            </h2>
+            <p class="text-xl text-gray-600 mb-12">
+                Connect with donors, investors, and changemakers building the future of humanitarian aid
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-6 mb-12">
+                <a href="https://discord.gg/PU9DfSv8" target="_blank" class="card-hover bg-indigo-600 text-white px-8 py-6 rounded-2xl shadow-lg flex items-center space-x-4 hover:bg-indigo-700 transition">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                    <div class="text-left">
+                        <div class="font-bold text-lg">Discord</div>
+                        <div class="text-sm text-indigo-200">Join the conversation</div>
+                    </div>
+                </a>
+                
+                <a href="https://x.com/AidoraFdn" target="_blank" class="card-hover bg-black text-white px-8 py-6 rounded-2xl shadow-lg flex items-center space-x-4 hover:bg-gray-800 transition">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <div class="text-left">
+                        <div class="font-bold text-lg">X (Twitter)</div>
+                        <div class="text-sm text-gray-400">Follow for updates</div>
+                    </div>
+                </a>
+                
+                <a href="https://www.instagram.com/aidorafoundation/" target="_blank" class="card-hover bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white px-8 py-6 rounded-2xl shadow-lg flex items-center space-x-4 hover:scale-105 transition">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    <div class="text-left">
+                        <div class="font-bold text-lg">Instagram</div>
+                        <div class="text-sm text-white/80">Visual stories</div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="bg-gradient-to-r from-blue-50 to-teal-50 rounded-3xl p-10">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">Stay Updated</h3>
+                <p class="text-gray-600 mb-6">Get the latest news, updates, and insights from the Aidora ecosystem</p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                    <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-xl border-2 border-gray-300 focus:border-blue-500 outline-none">
+                    <button class="cta-button text-white px-8 py-4 rounded-xl font-semibold whitespace-nowrap">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-soft-gold/20 text-text-primary py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center">
+                            <span class="text-white font-bold text-2xl">A</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold gradient-text text-lg">Aidora</h3>
+                            <p class="text-sm text-gray-400">ADR Token</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        One Coin. One Act of Hope — Where Crypto Meets a World Where Giving Never Gets Lost.
+                    </p>
+                    <p class="text-gray-400 mb-6">
+                        <a href="mailto:aidora.fdn@gmail.com" class="hover:text-soft-gold transition-colors">
+                            ✉️ aidora.fdn@gmail.com
+                        </a>
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://discord.gg/PU9DfSv8" target="_blank" class="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+                            </svg>
+                        </a>
+                        <a href="https://x.com/AidoraFdn" target="_blank" class="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center hover:bg-black transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/aidorafoundation/" target="_blank" class="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center hover:bg-pink-600 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4 gradient-text">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#problem" class="hover:text-white transition">Problem</a></li>
+                        <li><a href="#solution" class="hover:text-white transition">Solution</a></li>
+                        <li><a href="#mission" class="hover:text-white transition">Mission</a></li>
+                        <li><a href="#invest" class="hover:text-white transition">Invest</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4 gradient-text">Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="https://aidora.gitbook.io/aidora/" target="_blank" class="hover:text-white transition">Whitepaper</a></li>
+                        <li><a href="https://aidora.gitbook.io/aidora/" target="_blank" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="https://aidora.gitbook.io/aidora/" target="_blank" class="hover:text-white transition">Tokenomics</a></li>
+                        <li><a href="https://aidora.gitbook.io/aidora/" target="_blank" class="hover:text-white transition">Roadmap</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Aidora Foundation. All rights reserved.</p>
+                <p class="mt-2 text-sm">Building a transparent future for humanitarian aid, one block at a time.</p>
+            </div>
         </div>
     </footer>
+    </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // CTA Button interactions
+        document.querySelectorAll('.cta-button, button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const text = this.textContent.trim();
+                if (text.includes('Buy ADR') || text.includes('Buy Token')) {
+                    alert('🚀 Token purchase coming soon! Join our community to stay updated.');
+                } else if (text.includes('Join Community')) {
+                    window.open('https://discord.gg/PU9DfSv8', '_blank');
+                } else if (text.includes('Learn More')) {
+                    document.querySelector('#solution').scrollIntoView({ behavior: 'smooth' });
+                } else if (text.includes('Whitepaper')) {
+                    alert('📖 Whitepaper coming soon! Follow us on social media for updates.');
+                } else if (text.includes('Subscribe')) {
+                    const email = this.previousElementSibling?.value || this.parentElement.querySelector('input[type="email"]')?.value;
+                    if (email && email.includes('@')) {
+                        alert('✅ Thank you for subscribing! You\'ll receive updates about Aidora.');
+                        if (this.previousElementSibling) this.previousElementSibling.value = '';
+                        if (this.parentElement.querySelector('input[type="email"]')) {
+                            this.parentElement.querySelector('input[type="email"]').value = '';
+                        }
+                    } else {
+                        alert('⚠️ Please enter a valid email address.');
+                    }
+                }
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero-glow');
+            parallaxElements.forEach((el, index) => {
+                const speed = (index + 1) * 0.5;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Animate statistics on scroll
+        const animateStats = () => {
+            const stats = document.querySelectorAll('.stat-card');
+            stats.forEach((stat, index) => {
+                setTimeout(() => {
+                    stat.style.transform = 'scale(1)';
+                    stat.style.opacity = '1';
+                }, index * 100);
+            });
+        };
+
+        // Initialize stats animation when visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const heroSection = document.querySelector('section');
+        if (heroSection) {
+            statsObserver.observe(heroSection);
+        }
+
+        // Add hover effect to feature cards
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        console.log('🌟 Aidora (ADR) - Where Crypto Meets Hope 🌟');
+        console.log('Building a transparent future for humanitarian aid');
+    </script>
 </body>
 </html>
